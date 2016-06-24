@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+    <RelativeLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/title_ry"
+        >
+
+    </RelativeLayout>
+	<LinearLayout
+		android:id="@+id/footbar_layout_ly"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		>
+		<include layout="@layout/home_footbar_layout"></include>"
+	</LinearLayout>
+    <com.example.coral.mywork.MyScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/viewflipper_scrollview"
+        android:scrollbars="none"
+        android:focusable="false"
+        android:layout_above="@id/footbar_layout_ly"
+        android:layout_below="@id/title_ry">
+        <RelativeLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <ViewFlipper
+            android:id="@+id/mViewFliper_vf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+				<ImageView
+					android:layout_width="match_parent"
+					android:layout_height="160dip"
+					android:background="@drawable/testimg1"
+					android:id="@+id/img1"/>
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignBottom="@+id/img1"
+					android:layout_alignRight="@+id/img1"
+					android:text="防辐射的十一大健康食物都有啥？"/>
+			</RelativeLayout>
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+				<ImageView
+					android:layout_width="match_parent"
+					android:layout_height="160dip"
+					android:background="@drawable/testimg1"
+					android:id="@+id/img2"/>
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignBottom="@+id/img2"
+					android:layout_alignRight="@+id/img2"
+					android:text="防辐射的十一大健康食物都有啥？"/>
+			</RelativeLayout>
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+				<ImageView
+					android:layout_width="match_parent"
+					android:layout_height="160dip"
+					android:background="@drawable/default_pic_1"
+					android:id="@+id/img3"/>
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignBottom="@+id/img3"
+					android:layout_alignRight="@+id/img3"
+					android:text="防辐射的十一大健康食物都有啥？"/>
+			</RelativeLayout>
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+				<ImageView
+					android:layout_width="match_parent"
+					android:layout_height="160dip"
+					android:background="@drawable/default_pic_1"
+					android:id="@+id/img4"/>
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignBottom="@+id/img4"
+					android:layout_alignRight="@+id/img4"
+					android:text="防辐射的十一大健康食物都有啥？"/>
+			</RelativeLayout>
+
+        </ViewFlipper>
+        <LinearLayout
+        android:id="@+id/home_date_ratio_ly" 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mViewFliper_vf">
+         	<include  layout="@layout/home_data_bar"/>  
+        </LinearLayout>
+
+
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/home_date_ratio_ly"
+			android:orientation="vertical">
+           <ListView
+			   android:layout_width="match_parent"
+			android:layout_height="400dp"
+			   android:id="@+id/mainlistview">
+
+		   </ListView>
+        </LinearLayout>
+
+        </RelativeLayout>
+
+    </com.example.coral.mywork.MyScrollView>
+
+    
+</RelativeLayout>
