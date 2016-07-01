@@ -102,10 +102,16 @@ public class SearchActivity extends Activity {
             home_img_bn_Layout.setSelected(false);
             search_img_bn_layout.setSelected(false);
             login_img_bn_layout.setSelected(true);
+//            Intent intent = new Intent();
+//            intent.setClass(SearchActivity.this, LoginActivity.class);
+//            intent.putExtra("clickble", true);
+//            startActivity(intent);
+
             Intent intent = new Intent();
-            intent.setClass(SearchActivity.this, LoginActivity.class);
-            intent.putExtra("clickble", true);
+            intent.setClass(SearchActivity.this, NearbyMap.class);
+            //intent.putExtra("clickble", true);
             startActivity(intent);
+
         }
     };
 

@@ -292,9 +292,14 @@ public class TestUIActivity extends Activity implements OnGestureListener, OnTou
             search_img_bn_layout.setSelected(false);
             login_img_bn_layout.setSelected(true);
 
+//            Intent intent = new Intent();
+//            intent.setClass(TestUIActivity.this, LoginActivity.class);
+//            intent.putExtra("clickble", true);
+//            startActivity(intent);
+
             Intent intent = new Intent();
-            intent.setClass(TestUIActivity.this, LoginActivity.class);
-            intent.putExtra("clickble", true);
+            intent.setClass(TestUIActivity.this, NearbyMap.class);
+            //intent.putExtra("clickble", true);
             startActivity(intent);
 
         }
