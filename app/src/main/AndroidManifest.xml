@@ -31,9 +31,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+            <meta-data
+                android:name="com.baidu.lbsapi.API_KEY"
+                android:value="0oRVgo68MjoXLtVYlNbmgfDs89IPHGw8" />
+
         <activity
             android:label="@string/app_name"
-            android:name=".TestUIActivity" >
+            android:name=".TestUIActivity"
+            android:launchMode="singleTask">
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
 
@@ -45,11 +50,25 @@
             android:name=".MyActivity"></activity>
         <activity
             android:label="@string/app_name"
-            android:name=".loginactivity">
+            android:name=".NewsDetail"></activity>
+        <activity
+        android:label="@string/app_name"
+        android:name="com.example.coral.mywork.SearchActivity"
+        android:launchMode="singleTask"></activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".LoginActivity"
+            android:launchMode="singleTask"
+            >
             <!--android:windowSoftInputMode="adjustResize|stateVisible">-->
 
 
         </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".MedicineDetail"
+            android:launchMode="singleTask"></activity>
+
     </application>
 
 </manifest>

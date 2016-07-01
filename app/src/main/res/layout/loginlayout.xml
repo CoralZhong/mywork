@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg1"
+    android:background="@drawable/bg2"
     android:weightSum="1">
 
   <ImageView
@@ -23,7 +23,7 @@
     <ImageView
         android:layout_width="330dp"
         android:layout_height="120dp"
-        android:src="@drawable/edittext4"
+        android:src="@drawable/edittext5"
         android:id="@+id/imageView2"
 
         android:layout_centerVertical="true"
@@ -73,7 +73,7 @@
         android:layout_height="60dp"
         android:text="登录"
         android:id="@+id/button"
-        android:background="@drawable/btn1"
+        android:background="@drawable/btn6"
         android:textColor="#fdf9f9"
         android:textSize="20dp"
         android:layout_below="@+id/imageView2"

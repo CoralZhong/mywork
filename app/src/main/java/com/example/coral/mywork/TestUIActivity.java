@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.Html;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
@@ -16,10 +15,11 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageButton;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +30,7 @@ import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -42,7 +43,6 @@ import java.util.Map;
 public class TestUIActivity extends Activity implements OnGestureListener, OnTouchListener {
 
     private TextView date_TextView;
-    private ImageButton set_ImageButton, regist_ImageButton, login_ImageButton;
     private ViewFlipper viewFlipper;
     private boolean showNext = true;
     private boolean isRun = true;
@@ -51,8 +51,10 @@ public class TestUIActivity extends Activity implements OnGestureListener, OnTou
     private static final int FLING_MIN_DISTANCE = 50;
     private static final int FLING_MIN_VELOCITY = 0;
     private GestureDetector mGestureDetector;
-    private LinearLayout home_img_bn_Layout, search_img_bn_layout, cam_img_bn_layout, shopping_img_bn_layout, show_img_bn_layout;
-private ListView lv;
+    private LinearLayout home_img_bn_Layout, search_img_bn_layout, cam_img_bn_layout, login_img_bn_layout, show_img_bn_layout;
+    private ListView lv;
+    private RelativeLayout scroll1, scroll2, scroll3, scroll4;
+
     /**
      * Called when the activity is first created.
      */
@@ -64,22 +66,11 @@ private ListView lv;
         setContentView(R.layout.main);
         date_TextView = (TextView) findViewById(R.id.home_date_tv);
         date_TextView.setText(getDate());
-        lv= (ListView) findViewById(R.id.mainlistview);
-
-        // set_ImageButton = (ImageButton) findViewById(R.id.title_set_bn);
-//        set_ImageButton.setOnClickListener(new OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				toastInfo("��������");
-//			}
-//		});
-
-
+        lv = (ListView) findViewById(R.id.mainlistview);
 
         home_img_bn_Layout = (LinearLayout) findViewById(R.id.bottom_home_layout_ly);
-        home_img_bn_Layout.setOnClickListener(clickListener_home);
+        home_img_bn_Layout.setSelected(true);
+        home_img_bn_Layout.setClickable(false);
 
         search_img_bn_layout = (LinearLayout) findViewById(R.id.bottom_style_layout_ly);
         search_img_bn_layout.setOnClickListener(clickListener_search);
@@ -87,8 +78,8 @@ private ListView lv;
         //cam_img_bn_layout = (LinearLayout) findViewById(R.id.bottom_cam_layout_ly);
         //cam_img_bn_layout.setOnClickListener(clickListener_cam);
 
-        shopping_img_bn_layout = (LinearLayout) findViewById(R.id.bottom_shopping_layout_ly);
-        shopping_img_bn_layout.setOnClickListener(clickListener_mine);
+        login_img_bn_layout = (LinearLayout) findViewById(R.id.bottom_shopping_layout_ly);
+        login_img_bn_layout.setOnClickListener(clickListener_mine);
 
         //show_img_bn_layout = (LinearLayout) findViewById(R.id.bottom_show_layout_ly);
         //show_img_bn_layout.setOnClickListener(clickListener_show);
@@ -109,6 +100,62 @@ private ListView lv;
         thread.start();
         showhealthymsg();
 
+        scroll1 = (RelativeLayout) findViewById(R.id.scroll1);
+        scroll1.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TestUIActivity.this, NewsDetail.class);
+                //Bundle b = new Bundle();
+                //b.putSerializable("student", (Serializable) res.get(position));
+                String u = "http://jiankang.163.com/16/0529/12/BO825HDL0038008Q.html";
+                intent.putExtra("data", u);
+                startActivity(intent);
+
+            }
+        });
+
+        scroll2 = (RelativeLayout) findViewById(R.id.scroll2);
+        scroll2.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TestUIActivity.this, NewsDetail.class);
+                //Bundle b = new Bundle();
+                //b.putSerializable("student", (Serializable) res.get(position));
+                String u = "http://jiankang.163.com/16/0405/08/BJSJ95320038002S.html";
+                intent.putExtra("data", u);
+                startActivity(intent);
+
+            }
+        });
+
+        scroll3 = (RelativeLayout) findViewById(R.id.scroll3);
+        scroll3.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TestUIActivity.this, NewsDetail.class);
+                //Bundle b = new Bundle();
+                //b.putSerializable("student", (Serializable) res.get(position));
+                String u = "http://jiankang.163.com/16/0622/15/BQ656GEU0038008Q.html";
+                intent.putExtra("data", u);
+                startActivity(intent);
+
+            }
+        });
+
+        scroll4 = (RelativeLayout) findViewById(R.id.scroll4);
+        scroll4.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TestUIActivity.this, NewsDetail.class);
+                //Bundle b = new Bundle();
+                //b.putSerializable("student", (Serializable) res.get(position));
+                String u = "http://jiankang.163.com/16/0627/15/BQJ1D47S00380093.html";
+                intent.putExtra("data", u);
+                startActivity(intent);
+
+            }
+        });
+
     }
 
     private OnClickListener clickListener = new OnClickListener() {
@@ -127,7 +174,7 @@ private ListView lv;
             return mGestureDetector.onTouchEvent(event);
         }
     };
-//控制filiper
+    //控制filiper
     Handler mHandler = new Handler() {
 
         @Override
@@ -150,37 +197,47 @@ private ListView lv;
     };
 
     //接收api数据
-    List<Map<String,String>> list=new ArrayList<Map<String,String>>();
-    Handler h=new Handler(){
+    List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+    Handler h = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            Bundle b=msg.getData();
-            String str= (String) b.get("str");
-            Gson g=new Gson();
-            HealthyNewsBean hn=g.fromJson(str,HealthyNewsBean.class);
-            List<HealthyNewsBean.NewslistBean> l=hn.getNewslist();
-            int i=0;
-            for(HealthyNewsBean.NewslistBean news:l){
-                Map<String,String> map=new HashMap<String,String>();
-                String title=news.getTitle();
-                map.put("title",title);
-                String url=news.getUrl();
-                map.put("url",url);
+            Bundle b = msg.getData();
+            String str = (String) b.get("str");
+            Gson g = new Gson();
+            HealthyNewsBean hn = g.fromJson(str, HealthyNewsBean.class);
+            List<HealthyNewsBean.NewslistBean> l = hn.getNewslist();
+            int i = 0;
+            for (HealthyNewsBean.NewslistBean news : l) {
+                Map<String, String> map = new HashMap<String, String>();
+                String title = news.getTitle();
+                map.put("title", title);
+                String url = news.getUrl();
+                map.put("url", url);
                 list.add(map);
                 i++;
-                if(i>10){
+                if (i > 10) {
                     break;
                 }
             }
-            toastInfo("长度"+list.size());
-            SimpleAdapter sa=new SimpleAdapter(TestUIActivity.this,list,R.layout.newslistdetial,new String[]{"title"},new int[]{R.id.newstitle});
+            SimpleAdapter sa = new SimpleAdapter(TestUIActivity.this, list, R.layout.newslistdetial, new String[]{"title"}, new int[]{R.id.newstitle});
             lv.setAdapter(sa);
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(TestUIActivity.this, NewsDetail.class);
+                    //Bundle b = new Bundle();
+                    //b.putSerializable("student", (Serializable) res.get(position));
+                    intent.putExtra("data", list.get(position).get("url"));
+                    startActivity(intent);
 
+                }
+            });
 
 
         }
     };
+
     private String getDate() {
         Date date = new Date();
         Calendar c = Calendar.getInstance();
@@ -190,58 +247,42 @@ private ListView lv;
         if (w < 0) {
             w = 0;
         }
-        String mDate = c.get(Calendar.YEAR) + "年" + (c.get(Calendar.MONTH)+1) + "月" + c.get(Calendar.DATE) + "日  " + weekDays[w];
+        String mDate = c.get(Calendar.YEAR) + "年" + (c.get(Calendar.MONTH) + 1) + "月" + c.get(Calendar.DATE) + "日  " + weekDays[w];
         return mDate;
     }
 
-    private OnClickListener clickListener_home = new OnClickListener() {
-
-        @Override
-        public void onClick(View v) {
-            // TODO Auto-generated method stub
-            home_img_bn_Layout.setSelected(true);
-            search_img_bn_layout.setSelected(false);
-//				cam_img_bn_layout.setSelected(false);
-            shopping_img_bn_layout.setSelected(false);
-//				show_img_bn_layout.setSelected(false);
-//				Intent intent = new Intent();
-//				intent.setClass(TestUIActivity.this, MyActivity.class);
-//				intent.putExtra("clickble", true);
-//				startActivity(intent);
-            home_img_bn_Layout.setSelected(false);
-        }
-    };
+    //    private OnClickListener clickListener_home = new OnClickListener() {
+//
+//        @Override
+//        public void onClick(View v) {
+//            // TODO Auto-generated method stub
+//            home_img_bn_Layout.setSelected(true);
+//            search_img_bn_layout.setSelected(false);
+////				cam_img_bn_layout.setSelected(false);
+//            login_img_bn_layout.setSelected(false);
+////				show_img_bn_layout.setSelected(false);
+////				Intent intent = new Intent();
+////				intent.setClass(TestUIActivity.this, MyActivity.class);
+////				intent.putExtra("clickble", true);
+////				startActivity(intent);
+//            home_img_bn_Layout.setSelected(false);
+//        }
+//    };
     private OnClickListener clickListener_search = new OnClickListener() {
 
         @Override
         public void onClick(View v) {
-            // TODO Auto-generated method stub
             home_img_bn_Layout.setSelected(false);
             search_img_bn_layout.setSelected(true);
-            //cam_img_bn_layout.setSelected(false);
-            shopping_img_bn_layout.setSelected(false);
-//			show_img_bn_layout.setSelected(false);
-            //toastInfo("����ҵļ�����ת");
-//            Intent intent = new Intent();
-//            intent.setClass(TestUIActivity.this, vvv.class);
-//            intent.putExtra("clickble", true);
-//            startActivity(intent);
+            login_img_bn_layout.setSelected(false);
+            Intent intent = new Intent();
+            intent.setClass(TestUIActivity.this, SearchActivity.class);
+            intent.putExtra("clickble", true);
+            startActivity(intent);
 
         }
     };
-    private OnClickListener clickListener_cam = new OnClickListener() {
 
-        @Override
-        public void onClick(View v) {
-            // TODO Auto-generated method stub
-            home_img_bn_Layout.setSelected(false);
-            search_img_bn_layout.setSelected(false);
-            //cam_img_bn_layout.setSelected(true);
-            shopping_img_bn_layout.setSelected(false);
-            //show_img_bn_layout.setSelected(false);
-            toastInfo("����ҵļ�����ת");
-        }
-    };
     private OnClickListener clickListener_mine = new OnClickListener() {
 
         @Override
@@ -249,29 +290,16 @@ private ListView lv;
             // TODO Auto-generated method stub
             home_img_bn_Layout.setSelected(false);
             search_img_bn_layout.setSelected(false);
-//			cam_img_bn_layout.setSelected(false);
-            shopping_img_bn_layout.setSelected(true);
-//			show_img_bn_layout.setSelected(false);
-            //toastInfo("����ҵļ�����ת");
+            login_img_bn_layout.setSelected(true);
+
             Intent intent = new Intent();
-            intent.setClass(TestUIActivity.this, loginactivity.class);
+            intent.setClass(TestUIActivity.this, LoginActivity.class);
             intent.putExtra("clickble", true);
             startActivity(intent);
-        }
-    };
-    private OnClickListener clickListener_show = new OnClickListener() {
 
-        @Override
-        public void onClick(View v) {
-            // TODO Auto-generated method stub
-            home_img_bn_Layout.setSelected(false);
-            search_img_bn_layout.setSelected(false);
-//			cam_img_bn_layout.setSelected(false);
-            shopping_img_bn_layout.setSelected(false);
-//			show_img_bn_layout.setSelected(true);
-            toastInfo("����ҵļ�����ת");
         }
     };
+
 
     @Override
     public boolean onDown(MotionEvent e) {
@@ -421,12 +449,12 @@ private ListView lv;
 
     String httpUrl = "http://apis.baidu.com/txapi/health/health";
     String httpArg = "num=10&page=1";
-    String jsonResult ;
+    String jsonResult;
     //System.out.println(jsonResult);
 
-    public void showhealthymsg(){
+    public void showhealthymsg() {
 
-        (new Thread(){
+        (new Thread() {
             @Override
             public void run() {
                 super.run();
@@ -441,7 +469,7 @@ private ListView lv;
                             .openConnection();
                     connection.setRequestMethod("GET");
                     // 填入apikey到HTTP header
-                    connection.setRequestProperty("apikey",  "2971243f61b450c3d5e00fda852939b1");
+                    connection.setRequestProperty("apikey", "2971243f61b450c3d5e00fda852939b1");
                     connection.connect();
                     InputStream is = connection.getInputStream();
                     reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
@@ -453,14 +481,14 @@ private ListView lv;
                     reader.close();
                     result = sbf.toString();
 
-                    Message m=new Message();
-                    Bundle b=new Bundle();
-                    b.putSerializable("str",result);
+                    Message m = new Message();
+                    Bundle b = new Bundle();
+                    b.putSerializable("str", result);
                     m.setData(b);
                     h.sendMessage(m);
 
                 } catch (Exception e) {
-                    Log.e("error",e.toString());
+                    Log.e("error", e.toString());
                     e.printStackTrace();
                 }
 
@@ -469,7 +497,6 @@ private ListView lv;
 
 
     }
-
 
 
 }

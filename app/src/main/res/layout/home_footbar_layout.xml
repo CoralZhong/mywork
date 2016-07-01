@@ -48,7 +48,7 @@
             android:layout_width="28dip"
             android:layout_height="29dip"
             android:layout_gravity="center"
-            android:background="@drawable/search1"/>
+            android:background="@drawable/bottom_search_bn_style"/>
         <TextView 
             android:id="@+id/home_bottom_style_tv"
             android:layout_width="wrap_content"
@@ -76,7 +76,7 @@
             android:layout_width="28dip"
             android:layout_height="30dip"
             android:layout_gravity="center"
-            android:background="@drawable/user1"/>
+            android:background="@drawable/bottom_user_bn_style"/>
         <TextView 
             android:id="@+id/home_bottom_shopping_tv"
             android:layout_width="wrap_content"
