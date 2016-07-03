@@ -59,7 +59,7 @@
             android:textStyle="bold"
             android:textColor="@android:color/white"
             android:layout_gravity="center"
-            android:text="医疗查询"/>
+            android:text="药品参考"/>
     </LinearLayout>
 
         <LinearLayout 
@@ -87,7 +87,7 @@
             android:textStyle="bold"
             android:textColor="@android:color/white"
             android:layout_gravity="center"
-            android:text="我"/>
+            android:text="附近医院"/>
     </LinearLayout>
 
 

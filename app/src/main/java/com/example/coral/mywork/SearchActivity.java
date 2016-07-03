@@ -51,6 +51,7 @@ public class SearchActivity extends Activity {
         setContentView(R.layout.searchlayout);
         home_img_bn_Layout = (LinearLayout) findViewById(R.id.bottom_home_layout_ly);
         home_img_bn_Layout.setOnClickListener(clickListener_home);
+        home_img_bn_Layout.setSelected(false);
 
         search_img_bn_layout = (LinearLayout) findViewById(R.id.bottom_style_layout_ly);
         search_img_bn_layout.setSelected(true);
@@ -58,6 +59,7 @@ public class SearchActivity extends Activity {
 
         login_img_bn_layout = (LinearLayout) findViewById(R.id.bottom_shopping_layout_ly);
         login_img_bn_layout.setOnClickListener(clickListener_mine);
+        login_img_bn_layout.setSelected(false);
 
         //searchactivity = (RelativeLayout) findViewById(R.id.searchlayout);
         et = (EditText) findViewById(R.id.nameofmedicine);
