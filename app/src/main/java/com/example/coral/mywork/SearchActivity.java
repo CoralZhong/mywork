@@ -128,8 +128,9 @@ public class SearchActivity extends Activity {
         @Override
         public void onClick(View v) {
             String medicineinfo = et.getText().toString();
-            searchlist(medicineinfo);
             list.clear();
+            searchlist(medicineinfo);
+
 
 
         }
@@ -146,6 +147,9 @@ public class SearchActivity extends Activity {
             if (firstVisibleItem + visibleItemCount >= totalItemCount) {
                 // list.clear();
                 page++;
+//                String medicineinfo = et.getText().toString();
+//                list.clear();
+//                searchlist(medicineinfo);
                 //searchlist("阿莫西林");
             }
         }
@@ -190,13 +194,16 @@ public class SearchActivity extends Activity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         SearchMedicineList sml = retrofit.create(SearchMedicineList.class);
-        Call<MedicineListBean> call = sml.searchlist("2971243f61b450c3d5e00fda852939b1", "list", name, page, "20");
+        Call<MedicineListBean> call = sml.searchlist("2971243f61b450c3d5e00fda852939b1", "list", name, 1, "20");
         call.enqueue(new Callback<MedicineListBean>() {
             @Override
             public void onResponse(Call<MedicineListBean> call, Response<MedicineListBean> response) {
                 MedicineListBean mlb = response.body();
                 try{
                     List<MedicineListBean.RetDataBean.DataBean> ll = mlb.getRetData().getData();
+                    if (ll.size()==0){
+                        Toast.makeText(SearchActivity.this, "暂无数据", Toast.LENGTH_SHORT).show();
+                    }
                     for (MedicineListBean.RetDataBean.DataBean medicine : ll) {
                         Map<String, String> map = new HashMap<String, String>();
                         String drugId = medicine.getDrugId();

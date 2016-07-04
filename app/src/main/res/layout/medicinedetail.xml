@@ -19,13 +19,19 @@
         android:layout_alignBottom="@+id/imageView6"
         android:layout_centerHorizontal="true"
         android:id="@+id/textView" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView6"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:id="@+id/showdetail"/>
+        android:id="@+id/showdetail"
+        android:singleLine="false"
+        android:maxLines="30"
+        android:scrollbars="vertical"
+
+        />
 
 
 

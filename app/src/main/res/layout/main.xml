@@ -4,22 +4,8 @@
     android:layout_height="wrap_content"
     android:background="@android:color/white"
     android:orientation="vertical" >
-    <RelativeLayout 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:id="@+id/title_ry"
-        >
 
-    </RelativeLayout>
-	<LinearLayout
-		android:id="@+id/footbar_layout_ly"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_alignParentBottom="true"
-		>
-		<include layout="@layout/home_footbar_layout"></include>"
-	</LinearLayout>
+
     <com.example.coral.mywork.MyScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,8 +13,8 @@
         android:scrollbars="none"
         android:focusable="false"
         android:layout_above="@id/footbar_layout_ly"
-        android:layout_below="@id/title_ry">
-        <RelativeLayout 
+        >
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <ViewFlipper
@@ -117,20 +103,30 @@
 
         <LinearLayout 
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="400dp"
             android:layout_below="@id/home_date_ratio_ly"
-			android:orientation="vertical">
+			android:orientation="vertical"
+			android:layout_alignParentBottom="true">
            <ListView
 			   android:layout_width="match_parent"
-			android:layout_height="400dp"
+			android:layout_height="match_parent"
 			   android:id="@+id/mainlistview">
 
 		   </ListView>
         </LinearLayout>
 
+
+
         </RelativeLayout>
 
     </com.example.coral.mywork.MyScrollView>
-
+	<LinearLayout
+		android:id="@+id/footbar_layout_ly"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		>
+		<include layout="@layout/home_footbar_layout"></include>"
+	</LinearLayout>
     
 </RelativeLayout>

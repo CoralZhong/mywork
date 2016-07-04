@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/medicine"
         android:layout_below="@+id/nameofmedicine"
+        android:layout_above="@+id/footbar_layout_ly"
         android:layout_alignEnd="@+id/button2">
 
     </ListView>

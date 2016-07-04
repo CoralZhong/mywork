@@ -10,5 +10,5 @@ import retrofit2.http.Query;
  */
 public interface SearchMedicineList {
     @GET("/medlive/drugs/drugapi")
-    Call<MedicineListBean> searchlist(@Header("apikey") String apikey, @Query("type") String type, @Query("key") String key,@Query("page") int page,@Query("page") String pagesize);
+    Call<MedicineListBean> searchlist(@Header("apikey") String apikey, @Query("type") String type, @Query("key") String key,@Query("page") int page,@Query("pagesize") String pagesize);
 }
